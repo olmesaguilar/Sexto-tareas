@@ -38,7 +38,7 @@ switch(%_GET["op"]){
             $datos = $alumnos->eliminar($idAlumno);
             echo json_encode($datos);
             break;
-        mmmm
+        
 
 
 
