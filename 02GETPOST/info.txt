@@ -1,0 +1,13 @@
+url
+
+www.google.com?op=todos
+
+localhost/sexto/
+
+
+METODOS
+CONTROLADOR
+$_GET["op']
+
+//ESTO NO MIRA EL USUARIO
+$_POST["cedula"]
