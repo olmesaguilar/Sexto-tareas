@@ -8,12 +8,12 @@
 -- Versión de PHP: 8.2.14
 SET
     SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
- 
+
 START TRANSACTION;
- 
+
 SET
     time_zone = "+00:00";
- 
+
 --
 -- Base de datos: `sexto`
 --
@@ -28,7 +28,7 @@ CREATE TABLE
         `Apellido` text NOT NULL,
         `Edad` int (11) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
- 
+
 --
 -- Índices para tablas volcadas
 --
@@ -36,7 +36,7 @@ CREATE TABLE
 -- Indices de la tabla `alumnos`
 --
 ALTER TABLE `alumnos` ADD PRIMARY KEY (`IdAlumno`);
- 
+
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -44,5 +44,5 @@ ALTER TABLE `alumnos` ADD PRIMARY KEY (`IdAlumno`);
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos` MODIFY `IdAlumno` int (11) NOT NULL AUTO_INCREMENT;
- 
+
 COMMIT;

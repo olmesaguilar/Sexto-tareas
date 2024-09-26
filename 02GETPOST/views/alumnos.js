@@ -1,36 +1,49 @@
+var init = () => {
+  $("#frm_alumnos").on("submit", (e) => {
+    guardaryeditar(e);
+  });
+};
+
 $().ready(() => {
-    cargaTabla();
+  cargaTabla();
 });
 
 var cargaTabla = () => {
-    $.get("../controllers/alumnos.controller.php?op=todos", (listaAlumnos=>{
-        var tabla = '';
-        $.each(listaAlumnos, (index, alumno) => {
-            tabla += `<tr>
-            <td>${alumno.idalumno}</td>
-            <td>${alumno.nombre}</td>
-            <td>${alumno.apellido}</td>
-            <td>${alumno.edad}</td>
-            <td>${alumno.sexo}</td>
-            </tr>`;
-        });
-        $("#cuerpo").html(tabla);
-    }
-            part: 'snippet',
-            q: 'java',
-            type: 'video',
-            key: '<YOUR_GoogleAPIKey_HERE>'
-        },
-        function(data) {
-            var tabla = '';
-            $.each(data.items, (index, video) => {
-                tabla += `<tr>
-                <td>${video.snippet.title}</td>
-                <td>${video.snippet.description}</td>
-                <td><img src="${video.snippet.thumbnails.default.url}" alt=""></td>
-                </tr>`;
-            });
-            $("#cuerpo").html(tabla);
-        }
-    );
-}
+  $.get("../controllers/alumnos.controller.php?op=todos", (listaAlumnos) => {
+    var html = "";
+    console.log(listaAlumnos);
+    listaAlumnos = JSON.parse(listaAlumnos);
+    console.log(listaAlumnos);
+    $.each(listaAlumnos, (index, alumno) => {
+      html += `<tr>
+                <td>${index + 1}</td>
+                <td>${alumno.Nombre}</td>
+                <td>${alumno.Apellido}</td>
+                <td>${alumno.Edad}</td>
+                <td><button class="btn btn-primary">Editar</button> <button class="btn btn-danger">Eliminar</button></td>
+                </tr>
+                `;
+    });
+    $("#cuerpoalumnos").html(html);
+  });
+};
+
+var guardaryeditar = (e) => {
+  e.preventDefault();
+  var formData = new FormData($("#frm_alumnos")[0]);
+  $.ajax({
+    url: "../controllers/alumnos.controller.php?op=insertar",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (datos) {
+      console.log(datos);
+      $("#frm_alumnos")[0].reset();
+      $("#modal").modal("hide");
+      cargaTabla();
+    },
+  });
+};
+
+init();

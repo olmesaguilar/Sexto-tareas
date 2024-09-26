@@ -1,13 +1,11 @@
 url
-
 www.google.com?op=todos
+localhost/sexto/proyectos/02getpost/home.php?op=1
 
-localhost/sexto/
+http://localhost/sexto/proyectos/02getpost/controllers/alumnos.controller.php?op=todos
 
-
-METODOS
-CONTROLADOR
-$_GET["op']
-
-//ESTO NO MIRA EL USUARIO
+Controlador
+$_GET["op"]
+//esto no mira el usuario
 $_POST["cedula"]
+
